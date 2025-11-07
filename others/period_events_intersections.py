@@ -1,5 +1,6 @@
 import datetime
 
+
 start_date = datetime.date(2025, 1, 1)
 end_date = datetime.date(2025, 1, 8)
 

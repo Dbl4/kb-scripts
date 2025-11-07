@@ -1,9 +1,13 @@
-from selenium_stealth import stealth
-
-
-from selenium import webdriver
-import time
 import json
+import time
+
+from selenium import (
+    webdriver,
+)
+from selenium_stealth import (
+    stealth,
+)
+
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")

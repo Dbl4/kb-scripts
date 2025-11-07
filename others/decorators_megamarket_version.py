@@ -1,35 +1,69 @@
 # coding: utf8
 
-import json
-import time
 import hashlib
-import requests
-import uuid
+import json
 import random
 import string
+import time
+import uuid
+from functools import (
+    wraps,
+)
+from queue import (
+    Empty,
+)
+from urllib.parse import (
+    urlparse,
+)
 
-from celery import current_app as app
-from celery.exceptions import Reject, Ignore
-from celery.task.control import revoke
-from billiard import current_process
-from functools import wraps
-
-from grab import Grab
-from grab.cookie import CookieManager
-from grab.error import GrabNetworkError, GrabTimeoutError
-from queue import Empty
-from kombu import Queue
-
-from urllib3.util import connection
-from urllib.parse import urlparse
-
-# tools
-from services.tools import make_dir, rand_string
-from services.redirect import (fast_connect, get_hostname, gen_cookies_16, get_post_response_14, get_driver_14,
-                               set_global_driver_to_none)
-
+import requests
+from billiard import (
+    current_process,
+)
+from celery import (
+    current_app as app,
+)
+from celery.exceptions import (
+    Ignore,
+    Reject,
+)
+from celery.task.control import (
+    revoke,
+)
 # logging
-from celery.utils.log import get_task_logger
+from celery.utils.log import (
+    get_task_logger,
+)
+from grab import (
+    Grab,
+)
+from grab.cookie import (
+    CookieManager,
+)
+from grab.error import (
+    GrabNetworkError,
+    GrabTimeoutError,
+)
+from kombu import (
+    Queue,
+)
+from services.redirect import (
+    fast_connect,
+    gen_cookies_16,
+    get_driver_14,
+    get_hostname,
+    get_post_response_14,
+    set_global_driver_to_none,
+)
+# tools
+from services.tools import (
+    make_dir,
+    rand_string,
+)
+from urllib3.util import (
+    connection,
+)
+
 
 logger = get_task_logger(__name__)
 
@@ -38,7 +72,10 @@ _orig_create_connection = connection.create_connection
 
 
 def patch_http_connection_pool(**constructor_kwargs):
-    from urllib3 import connectionpool, poolmanager
+    from urllib3 import (
+        connectionpool,
+        poolmanager,
+    )
 
     class MyHTTPConnectionPool(connectionpool.HTTPConnectionPool):
         def __init__(self, *args,**kwargs):
@@ -48,7 +85,10 @@ def patch_http_connection_pool(**constructor_kwargs):
 
 
 def patch_https_connection_pool(**constructor_kwargs):
-    from urllib3 import connectionpool, poolmanager
+    from urllib3 import (
+        connectionpool,
+        poolmanager,
+    )
 
     class MyHTTPSConnectionPool(connectionpool.HTTPSConnectionPool):
         def __init__(self, *args,**kwargs):

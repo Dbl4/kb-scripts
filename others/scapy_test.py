@@ -1,4 +1,8 @@
-from scapy.all import srp, Ether, ARP
+from scapy.all import (
+    ARP,
+    Ether,
+    srp,
+)
 
 
 def get_remote_mac(ip):

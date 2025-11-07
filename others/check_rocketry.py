@@ -1,7 +1,12 @@
 import datetime
 
-from rocketry import Rocketry
-from rocketry.conditions.api import cron
+from rocketry import (
+    Rocketry,
+)
+from rocketry.conditions.api import (
+    cron,
+)
+
 
 app = Rocketry(execution="async")
 

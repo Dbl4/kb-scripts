@@ -1,6 +1,17 @@
+from unittest.mock import (
+    MagicMock,
+    mock_open,
+    patch,
+)
+
 import pytest
-from unittest.mock import patch, mock_open, MagicMock
-from others.functions_for_tests import is_palindrome, write_data, get_user_data
+
+from others.functions_for_tests import (
+    get_user_data,
+    is_palindrome,
+    write_data,
+)
+
 
 @pytest.mark.parametrize("word, expected", [
     ("madam", True),

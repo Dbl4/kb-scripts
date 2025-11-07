@@ -2,10 +2,14 @@ import base64
 import json
 import random
 import string
-from pathlib import WindowsPath
+from datetime import (
+    datetime,
+)
+from pathlib import (
+    WindowsPath,
+)
 
 import requests
-from datetime import datetime
 
 
 def get_dict_auth_store(store):

@@ -17,6 +17,7 @@
 
 import requests
 
+
 # cookies = {
 #     'currentRegion': 'RU-MOW',
 #     'currentPOS': 'C027',

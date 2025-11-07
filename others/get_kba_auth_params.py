@@ -2,7 +2,9 @@ import base64
 import json
 import random
 import string
-from datetime import datetime
+from datetime import (
+    datetime,
+)
 
 
 def get_dict_auth_store(store):

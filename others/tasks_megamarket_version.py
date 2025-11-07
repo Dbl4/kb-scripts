@@ -1,32 +1,45 @@
 # tasks
-from celery import current_app as app
 import hashlib
 import json
 import os
 import re
-from datetime import date
+from datetime import (
+    date,
+)
 
-# scraping
-from grab import Grab
-
-#decorators
-from services.decorators import rate_limit
-from services.decorators import get_connect
-from services.decorators import get_page, get_page14
-
-#putters
-from putter.tasks import put_group
-from putter.tasks import put_product
-from putter.tasks import put_region
-from putter.tasks import put_city
-from putter.tasks import put_shop
-from putter.tasks import put_price
-
-#tools
-from services.tools import search_mera, extract_json_objects
-
+from celery import (
+    current_app as app,
+)
 # logging
-from celery.utils.log import get_task_logger
+from celery.utils.log import (
+    get_task_logger,
+)
+# scraping
+from grab import (
+    Grab,
+)
+#putters
+from putter.tasks import (
+    put_city,
+    put_group,
+    put_price,
+    put_product,
+    put_region,
+    put_shop,
+)
+#decorators
+from services.decorators import (
+    get_connect,
+    get_page,
+    get_page14,
+    rate_limit,
+)
+#tools
+from services.tools import (
+    extract_json_objects,
+    search_mera,
+)
+
 
 logger = get_task_logger(__name__)
 

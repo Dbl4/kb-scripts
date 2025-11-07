@@ -1,4 +1,6 @@
-from sqlalchemy.engine.reflection import cache
+from sqlalchemy.engine.reflection import (
+    cache,
+)
 
 
 class Singleton:

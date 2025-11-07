@@ -1,5 +1,7 @@
 import asyncio
+
 import httpx
+
 
 URL = "http://localhost:8000/api/v1/strategies/state"  # Подставьте ваш URL эндпоинта
 headers={"X-UID": "8698", "X-Token": "tBY9b3YrfJkDA4P"}

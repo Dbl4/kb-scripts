@@ -1,7 +1,10 @@
 import hashlib
 import os
 import re
-from shutil import copyfile
+from shutil import (
+    copyfile,
+)
+
 
 IMG_REGEX = re.compile('.*(\.(?:jpe?g|png|bmp|gif))', re.IGNORECASE)
 IMG_DST_DIR = './data/img_dst/'

@@ -1,6 +1,12 @@
-import requests
 import logging
-from xml.etree.ElementTree import Element, SubElement, tostring
+from xml.etree.ElementTree import (
+    Element,
+    SubElement,
+    tostring,
+)
+
+import requests
+
 
 class SMSClient:
     headers = {'Content-Type': 'text/xml; charset=utf-8'}

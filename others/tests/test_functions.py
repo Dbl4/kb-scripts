@@ -6,6 +6,7 @@ from unittest.mock import (
 
 import pytest
 
+from others.asyncio_tasks import fetch_all
 from others.functions_for_tests import (
     get_user_data,
     is_palindrome,
@@ -63,3 +64,17 @@ def test_get_user_data_not_found(mock_get):
 # tests/test_users.py
 def test_user_role(user_data):
     assert user_data["role"] == "admin"
+
+
+@pytest.mark.asyncio
+async def test_fetch_all_success():
+    urls = ["https://httpbin.org/get"]
+    result = await fetch_all(urls, limit=1)
+    assert result[0] is not None
+
+
+@pytest.mark.asyncio
+async def test_fetch_all_fail():
+    urls = ["https://nonexistent.abc.xyz"]
+    result = await fetch_all(urls)
+    assert result[0] is None
